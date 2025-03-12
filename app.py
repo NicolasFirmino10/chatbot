@@ -56,7 +56,7 @@ documento = ""
 for doc in documentos_site:
     documento += doc.page_content
 
-@app.route('/chat', methods=['POST'])
+@app.route('https://chatbot-i33c.vercel.app/', methods=['POST'])
 def chat_endpoint():
     data = request.json
     mensagens = data.get('mensagens', [])
