@@ -28,19 +28,17 @@ const FloatingChat = () => {
     setPergunta("");
 
     try {
-      // Envia a requisição para o servidor Flask
-      const resposta = await fetch("https://chatbot-i33c.vercel.app/chat", {  // Corrigido para "/chat"
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            mensagens: [...mensagens, novaMensagemUsuario],  // Envia o histórico completo
-            documento: "",  // O documento já está carregado no servidor
-        }),
-    });
-    const data = await resposta.json(); // Recebe a resposta JSON
-    console.log(data); 
+      const resposta = await fetch("https://chatbot-i33c.vercel.app/chat", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              mensagens: [...mensagens, novaMensagemUsuario],
+              documento: "",
+          }),
+      });
+  
     
     
 

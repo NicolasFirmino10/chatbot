@@ -2,10 +2,6 @@
     "version": 2,
     "builds": [
       {
-        "src": "my-chatbot/package.json",
-        "use": "@vercel/react"
-      },
-      {
         "src": "app.py",
         "use": "@vercel/python"
       }
@@ -14,10 +10,6 @@
       {
         "src": "/chat",
         "dest": "/app.py"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/my-chatbot/$1"
       }
     ]
   }
