@@ -29,7 +29,7 @@ const FloatingChat = () => {
 
     try {
       // Envia a requisição para o servidor Flask
-      const resposta = await fetch("http://localhost:5000/chat", {
+      const resposta = await fetch("https://chatbot-i33c.vercel.app/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
