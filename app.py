@@ -56,17 +56,15 @@ documento = ""
 for doc in documentos_site:
     documento += doc.page_content
 
-@app.route('/chat', methods=['POST'])
+@app.route(methods=['POST'])
 def chat_endpoint():
     try:
         data = request.json
         mensagens = data.get('mensagens', [])
-        resposta = resposta_bot(mensagens, documento)
+        resposta = "Resposta do bot"  # Simulação
         return jsonify({"resposta": resposta})
     except Exception as e:
-        print(f"Erro ao processar a requisição: {e}")
-        return jsonify({"resposta": "Desculpe, houve um erro no servidor."}), 500
+        return jsonify({"resposta": "Erro no servidor."}), 500
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+if __name__ == "__main__":
+    app.run(debug=True)
