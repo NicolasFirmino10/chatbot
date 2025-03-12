@@ -56,15 +56,13 @@ documento = ""
 for doc in documentos_site:
     documento += doc.page_content
 
-@app.route(methods=['POST'])
+@app.route('/chat', methods=['POST'])
 def chat_endpoint():
-    try:
-        data = request.json
-        mensagens = data.get('mensagens', [])
-        resposta = "Resposta do bot"  # Simulação
-        return jsonify({"resposta": resposta})
-    except Exception as e:
-        return jsonify({"resposta": "Erro no servidor."}), 500
+    data = request.json
+    mensagens = data.get('mensagens', [])
+    resposta = "Resposta do bot"  # Simulação
+    return jsonify({"resposta": resposta})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# 🔥 IMPORTANTE: Handler para Vercel
+def handler(event, context):
+    return app(event, context)
