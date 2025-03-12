@@ -39,6 +39,9 @@ const FloatingChat = () => {
             documento: "",  // O documento já está carregado no servidor
         }),
     });
+    const data = await resposta.json(); // Recebe a resposta JSON
+    console.log(data); 
+    
     
 
       if (!resposta.ok) {
