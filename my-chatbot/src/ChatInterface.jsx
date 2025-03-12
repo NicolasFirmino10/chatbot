@@ -29,16 +29,17 @@ const FloatingChat = () => {
 
     try {
       // Envia a requisição para o servidor Flask
-      const resposta = await fetch("https://chatbot-i33c.vercel.app/", {
+      const resposta = await fetch("https://chatbot-i33c.vercel.app/chat", {  // Corrigido para "/chat"
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          mensagens: [...mensagens, novaMensagemUsuario], // Envia o histórico completo
-          documento: "", // O documento já está carregado no servidor
+            mensagens: [...mensagens, novaMensagemUsuario],  // Envia o histórico completo
+            documento: "",  // O documento já está carregado no servidor
         }),
-      });
+    });
+    
 
       if (!resposta.ok) {
         throw new Error("Erro ao enviar a pergunta");
