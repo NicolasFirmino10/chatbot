@@ -61,13 +61,12 @@ def chat_endpoint():
     try:
         data = request.json
         mensagens = data.get('mensagens', [])
-        resposta = "Resposta do bot"  # Simulação
+        resposta = resposta_bot(mensagens, documento)
         return jsonify({"resposta": resposta})
     except Exception as e:
         print(f"Erro ao processar a requisição: {e}")
-        return jsonify({"error": "Erro ao processar a requisição"}), 500
+        return jsonify({"resposta": "Desculpe, houve um erro no servidor."}), 500
 
-
-# 🔥 IMPORTANTE: Handler para Vercel
-def handler(event, context):
-    return app(event, context)
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
