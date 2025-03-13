@@ -32,7 +32,7 @@ const FloatingChat = () => {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
-              "Authorization": "Bearer GROQ_API_KEY",
+              "Authorization": "Bearer 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",
           },
           body: JSON.stringify({
               mensagens: [...mensagens, novaMensagemUsuario],
