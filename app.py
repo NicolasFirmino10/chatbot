@@ -17,7 +17,7 @@ chat = ChatGroq(model="llama-3.3-70b-versatile")
 app = Flask(__name__)
 
 # Ativa o CORS para todas as origens
-CORS(app, origins=["https://chatbot-i33c.vercel.app/"])
+CORS(app)
 
 # COMO O BOT IRÁ RESPONDER
 def resposta_bot(mensagens, documento):
