@@ -28,39 +28,38 @@ const FloatingChat = () => {
     setPergunta("");
 
     try {
-      const resposta = await fetch("https://chatbot-i33c.vercel.app/", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer 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",
-          },
-          body: JSON.stringify({
-              mensagens: [...mensagens, novaMensagemUsuario],
-              documento: "",
-          }),
-      });
-  
+        const resposta = await fetch("https://chatbot-i33c.vercel.app/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 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",
+            },
+            body: JSON.stringify({
+                mensagens: [...mensagens, novaMensagemUsuario],
+                documento: "",
+            }),
+        });
 
-      if (!resposta.ok) {
-        throw new Error("Erro ao enviar a pergunta");
-      }
+        if (!resposta.ok) {
+            throw new Error("Erro ao enviar a pergunta");
+        }
 
-      const dados = await resposta.json();
+        const dados = await resposta.json();
 
-      // Adiciona a resposta do bot ao histórico
-      const novaMensagemBot = { sender: "bot", content: dados.resposta };
-      setMensagens((prev) => [...prev, novaMensagemBot]);
+        // Adiciona a resposta do bot ao histórico
+        const novaMensagemBot = { sender: "bot", content: dados.resposta };
+        setMensagens((prev) => [...prev, novaMensagemBot]);
     } catch (erro) {
-      console.error("Erro:", erro);
-      // Adiciona uma mensagem de erro ao histórico
-      const mensagemErro = {
-        sender: "bot",
-        content: "Desculpe, houve um erro ao processar sua pergunta.",
-      };
-      setMensagens((prev) => [...prev, mensagemErro]);
+        console.error("Erro:", erro);
+        // Adiciona uma mensagem de erro ao histórico
+        const mensagemErro = {
+            sender: "bot",
+            content: "Desculpe, houve um erro ao processar sua pergunta.",
+        };
+        setMensagens((prev) => [...prev, mensagemErro]);
     }
-  };
-
+};
+  
   return (
     <div className="floating-chat-container">
       {/* Botão para abrir/fechar o chat */}
