@@ -28,7 +28,7 @@ const FloatingChat = () => {
     setPergunta("");
 
     try {
-        const resposta = await fetch("https://chatbot-i33c.vercel.app/", {
+        const resposta = await fetch("https://chatbot-i33c.vercel.app/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

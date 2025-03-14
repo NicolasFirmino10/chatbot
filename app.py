@@ -56,7 +56,7 @@ documento = ""
 for doc in documentos_site:
     documento += doc.page_content
 
-@app.route('/', methods=['POST'])
+@app.route('/chat', methods=['POST'])
 def chat_endpoint():
     try:
         data = request.json
